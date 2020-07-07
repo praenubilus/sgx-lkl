@@ -616,7 +616,7 @@ static void lkl_run_in_kernel_stack(void* (*start_routine)(void*), void* arg)
         MAP_SHARED | MAP_ANONYMOUS,
         -1,
         0);
-    if (addr == MAP_FAILED)
+    if ((intptr_t)addr < 0)
     {
         sgxlkl_fail("lkl_sys_mmap failed\n");
     }
